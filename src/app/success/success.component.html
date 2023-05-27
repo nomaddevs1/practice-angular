@@ -1,0 +1,15 @@
+<h4>Welcome {{submitted ? userName : ""}}</h4>
+<div class="container">
+    <div class="row">
+        <label for="username">Username</label>
+        <input type="text" name="username" class="" [(ngModel)]="userName">
+
+    </div>
+    <div class="row">
+        <label for="password">Password</label>
+        <input type="password" name="password" class="" [(ngModel)]="password">
+
+    </div>
+    <button class="btn btn-primary" [disabled]="(userName === '') || (password === '') "
+        (click)="onSubmit()">Submit</button>
+</div>
