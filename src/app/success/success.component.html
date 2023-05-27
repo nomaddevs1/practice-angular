@@ -10,6 +10,22 @@
         <input type="password" name="password" class="" [(ngModel)]="password">
 
     </div>
-    <button class="btn btn-primary" [disabled]="(userName === '') || (password === '') "
-        (click)="onSubmit()">Submit</button>
+    <div class="form-check" #Data>
+        <div *ngFor="let hobbie of hobbies">
+            <input class="form-check-input" type="checkbox" value={{hobbie}} id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+                {{hobbie}}
+            </label>
+        </div>
+        <button class="btn btn-primary" [disabled]="(userName === '') || (password === '')"
+            (click)="onSubmit(Data)">Submit</button>
+    </div>
+    <!-- ? The let i = index allow is to access the index -->
+    <div *ngFor="let player of persons; let i = index">
+        <p *ngIf="submitted" [ngStyle]="{backgroundColor:i >= 5 ?'blue':'' }" [ngClass]="{b:i >= 5}">
+            The user {{player.username}} has joined the server with the hobbies: <span
+                *ngFor="let hob of player.hobbie">{{hob}},</span>
+        </p>
+    </div>
+
 </div>
